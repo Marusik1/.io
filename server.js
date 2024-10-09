@@ -7,7 +7,7 @@ const port = 3000; // Вы можете выбрать любой порт
 // Настройка маршрута для загрузки PDF-файлов
 app.get('/api/pdf/:subject', (req, res) => {
   const subject = req.params.subject;
-  const filePath = path.join(__dirname, 'pdf', ${subject}.pdf); // Путь к PDF-файлу 
+  const filePath = path.join(__dirname, 'pdf', `${subject}.pdf`); // Путь к PDF-файлу 
 
   try {
     const fileStream = fs.createReadStream(filePath);
@@ -21,5 +21,5 @@ app.get('/api/pdf/:subject', (req, res) => {
 
 // Запуск сервера
 app.listen(port, () => {
-  console.log(Сервер запущен на порту ${port});
+  console.log(`Сервер запущен на порту ${port}`);
 });
