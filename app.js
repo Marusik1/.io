@@ -55,3 +55,4 @@ TelegramWebApp.onEvent("data", (data) => {
     alert("Ошибка при отправке PDF файла.");
   }
 });
+
