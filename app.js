@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buttons.forEach(button => {
     button.addEventListener('click', async () => {
       const subject = button.id;
-      const fileUrl = `https://your-server.com/api/pdf/${subject}`; // Замените на ваш сервер
+      const fileUrl = `https://marusik1.github.io/.io/${subject}`; // Замените на ваш сервер
 
       try {
         const response = await fetch(fileUrl);
