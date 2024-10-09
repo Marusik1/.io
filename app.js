@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const telegram = Telegram.WebApp;
         const file = new File([blob], `${subject}.pdf`, {type: 'application/pdf'});
 
-        await telegram.MainButton.setText('Загрузить PDF');
+        await telegram.MainButton.setText('Я мудак');
         await telegram.MainButton.setParams({
           is_external: true, 
           is_silent: true,
