@@ -1,42 +1,29 @@
-// app.js
-
-//  Функция для обработки нажатия на кнопку
-function handleButtonClick(fileId) {
-  //  Получение имени файла
-  const fileName = document.getElementById(fileId).textContent;
-
-  //  Создание объекта данных
-  const data = {
-    file: fileId,
-    name: fileName
-  };
-
-  //  Отправка данных на сервер
-  fetch('/api/send_file', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  .then(response => {
-    if (response.ok) {
-      console.log('Файл успешно отправлен');
-    } else {
-      console.error('Ошибка отправки файла');
-    }
-  })
-  .catch(error => {
-    console.error('Ошибка:', error);
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.button');
+  
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Получите ID чата
+        Telegram.WebApp.ready().then(function() {
+          const chatId = Telegram.WebApp.initDataUnsafe.user.id;
+  
+          // Отправьте запрос на сервер
+          fetch('/pdf', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `chat_id=${chatId}`
+          })
+          .then(response => {
+            // Обработка ответа от сервера (например, показ сообщения об успешной отправке)
+            console.log('PDF file sent successfully!');
+          })
+          .catch(error => {
+            // Обработка ошибок
+            console.error('Error sending PDF file:', error);
+          });
+        });
+      });
+    });
   });
-}
-
-//  Добавление обработчика для каждой кнопки
-const buttons = document.querySelectorAll('.button');
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    handleButtonClick(button.id);
-  });
-});
-
-
